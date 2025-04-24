@@ -21,26 +21,26 @@ class CustomerService {
   // 打印所有客户的列表信息
   def getCustomerInfo(): Unit = {
     println("客户列表：")
-    println("编号\t\t年龄\t\t姓名\t\t性别\t\t电话\t\t邮箱")
+    println("编号\t\t年龄\t\t姓名\t\t性别\t\t电话\t\t\t\t邮箱")
     for (customer <- customerInfo) {
       println(customer.toString)
     }
-    println("客户列表显示完毕。。。\n。。。。。。。。。。。。。。。。")
+    println("*********客户列表显示完毕*********")
   }
 
   // 添加新的客户信息到列表中
   def addCustomerInfo(): Unit = {
-    println("添加客户：")
+    println("请添加客户")
     println("请依次输入用户信息：")
-    println("姓名：")
+    print("姓名：")
     val name = StdIn.readLine()
-    println("年龄：")
+    print("年龄：")
     val age = StdIn.readShort()
-    println("性别：")
+    print("性别：")
     val gender = StdIn.readChar()
-    println("电话：")
+    print("电话：")
     val tel = StdIn.readLine()
-    println("邮箱：")
+    print("邮箱：")
     val email = StdIn.readLine()
     // 创建新的Customer对象并添加到customerInfo中
     val customer = new Customer(customerId, age, name, gender, tel, email)
@@ -52,13 +52,13 @@ class CustomerService {
   // 删除指定编号的客户信息
   def delCustomerInfo(): Unit = {
     println("删除客户操作：")
-    println("请选择待删除客户编号(-1退出):")
+    print("请选择待删除客户编号(-1退出):")
     val id = StdIn.readInt()
     if (id == -1) {
       println("退出删除操作")
       return
     }
-    println("请确认是否删除(Y/N):")
+    print("请确认是否删除(Y/N):")
     var choice = ' '
     // 使用breakable来控制循环，直到用户输入有效的确认字符
     breakable {
@@ -111,7 +111,7 @@ class CustomerService {
   // 更新指定编号的客户信息
   def updateCustomerInfo(): Unit = {
     println("修改客户操作：")
-    println("请选择待修改客户编号(-1退出)：")
+    print("请选择待修改客户编号(-1退出)：")
     val id = StdIn.readInt()
     if (id == -1) {
       println("退出修改操作")
@@ -123,19 +123,19 @@ class CustomerService {
       return
     } else {
       println("请依次输入新的用户信息：")
-      println("姓名(" + customerInfo(index).name + "):")
+      print("姓名(" + customerInfo(index).name + "):")
       customerInfo(index).name = StdIn.readLine()
 
-      println("年龄(" + customerInfo(index).age + "):")
+      print("年龄(" + customerInfo(index).age + "):")
       customerInfo(index).age = StdIn.readShort()
 
-      println("性别(" + customerInfo(index).gender + "):")
+      print("性别(" + customerInfo(index).gender + "):")
       customerInfo(index).gender = StdIn.readChar()
 
-      println("电话(" + customerInfo(index).phone + "):")
+      print("电话(" + customerInfo(index).phone + "):")
       customerInfo(index).phone = StdIn.readLine()
 
-      println("邮箱(" + customerInfo(index).email + "):")
+      print("邮箱(" + customerInfo(index).email + "):")
       customerInfo(index).email = StdIn.readLine()
       println("修改用户信息完成！")
       return
